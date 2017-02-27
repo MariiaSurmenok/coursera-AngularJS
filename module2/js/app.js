@@ -8,12 +8,19 @@
 
 	ToBuyController.$inject = ['ShoppingListCheckOffService'];
 	function ToBuyController(ShoppingListCheckOffService) {
-		buyList = this;
+		var buyList = this;
+
+		buyList.items = ShoppingListCheckOffService.getToBuyItems();
+		buyList.buyItem = function (itemIndex) {
+			ShoppingListCheckOffService.buyItem(itemIndex);
+		};
 	}
 
 	AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
 	function AlreadyBoughtController(ShoppingListCheckOffService) {
-		boughtList = this;
+		var boughtList = this;
+
+		boughtList.items = ShoppingListCheckOffService.getBoughtItems();
 	}
 
 	function ShoppingListCheckOffService() {
@@ -45,18 +52,18 @@
 
 		];
 
-		service.buyItem = function(itemIndex) {
-			item = toBuyItems.splice(itemIndex, 1)[0]
+		service.buyItem = function (itemIndex) {
+			var item = toBuyItems.splice(itemIndex, 1)[0]
 			boughtItems.push(item);
-		}
+		};
 
-		service.getBoughtItems() {
+		service.getBoughtItems = function () {
 			return boughtItems;
-		}
+		};
 
-		service.getToBuyItems() {
+		service.getToBuyItems = function () {
 			return toBuyItems;
-		}
+		};
 	}
 
 })();
