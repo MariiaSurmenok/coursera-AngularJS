@@ -24,7 +24,7 @@
 
 
 	NarrowItDownController.$inject = ['$scope', 'MenuSearchService'];
-	function NarrowItDownController(MenuSearchService) {
+	function NarrowItDownController($scope, MenuSearchService) {
 		
 		var ctrl = this;
 
