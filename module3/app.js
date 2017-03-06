@@ -36,6 +36,7 @@
 					.catch(function (error) {
 			    		console.log("Something went terribly wrong.");
 			  		});
+			 console.log("Items: " + ctrl.found);
 		}
 
 		ctrl.removeItem = function (itemIndex) {
