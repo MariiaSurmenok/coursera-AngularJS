@@ -27,15 +27,14 @@
 	function NarrowItDownController($scope, MenuSearchService) {
 		
 		var ctrl = this;
+		ctrl.found = [];
 
 		ctrl.searchItems = function() {
 			var promise = MenuSearchService.getMatchedMenuItems($scope.searchTerm);
 					promise.then(function(result) {
-						ctrl.found = result;
-						console.log("Items: ");
-						ctrl.found.forEach(function(element) {
-							console.log(element);
-						});
+						ctrl.found = result.menu_items[0].name;
+						console.log("Items: " + ctrl.found);
+						
 					})
 					.catch(function (error) {
 			    		console.log("Something went terribly wrong.");
