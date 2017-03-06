@@ -32,11 +32,14 @@
 			var promise = MenuSearchService.getMatchedMenuItems($scope.searchTerm);
 					promise.then(function(result) {
 						ctrl.found = result;
+						console.log("Items: ");
+						ctrl.found.forEach(function(element) {
+							console.log(element);
+						});
 					})
 					.catch(function (error) {
 			    		console.log("Something went terribly wrong.");
 			  		});
-			 console.log("Items: " + ctrl.found);
 		}
 
 		ctrl.removeItem = function (itemIndex) {
